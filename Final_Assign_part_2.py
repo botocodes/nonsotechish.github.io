@@ -124,7 +124,7 @@ def update_output_container(selected_statistics, input_year):
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
  # Yearly Statistic Report Plots                             
-    elif (input_year and selected_statistics=='Yearly_Statistics') :
+    elif (input_year and selected_statistics=='Yearly Statistics') :
         yearly_data = data[data['Year'] == input_year]
                               
 #TASK 2.5: Creating Graphs Yearly data
@@ -151,10 +151,10 @@ def update_output_container(selected_statistics, input_year):
             title='Average Vehicles Sold by Vehicle Type in the year {}'.format(input_year)))
 
             # Total Advertisement Expenditure for each vehicle using pie chart
-        exp_data=yearly_data.groupby('Vehicle_Type')['Advertisement_Expenditure'].sum()
+        exp_data=yearly_data.groupby('Vehicle_Type')['Advertising_Expenditure'].sum().reset_index()
         Y_chart4 = dcc.Graph(figure= px.pie(exp_data,
             names= 'Vehicle_Type',
-            values= 'Advertisement_Expenditure',
+            values= 'Advertising_Expenditure',
             title= 'Total advertisement expenditure by vehicle type'))
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
@@ -169,4 +169,3 @@ def update_output_container(selected_statistics, input_year):
 # Run the Dash app
 if __name__ == '__main__':
     app.run_server(debug=True)
-
